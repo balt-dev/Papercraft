@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ck5rmjw2el70f"]
+
+[ext_resource type="Script" path="res://classes/block_resource.gd" id="1_h57m2"]
+[ext_resource type="Texture2D" uid="uid://c6bv2137exdq0" path="res://assets/textures/blocks/grass_block.png" id="2_hc7mu"]
+
+[resource]
+script = ExtResource("1_h57m2")
+texture = ExtResource("2_hc7mu")
+hardness = 0.5
+p_tool = 4
+breaking_tier = 0
+id = "papercraft:grass_block"
+collision = [PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 0)]
+loot_table = ""
+material = 1

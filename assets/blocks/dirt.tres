@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bxpeyxb1c6twf"]
+
+[ext_resource type="Script" path="res://classes/block_resource.gd" id="1_8l5v2"]
+[ext_resource type="Texture2D" uid="uid://b5fpdg4hbqj6r" path="res://assets/textures/blocks/dirt.png" id="2_1wq3x"]
+
+[resource]
+script = ExtResource("1_8l5v2")
+texture = ExtResource("2_1wq3x")
+hardness = 1.0
+p_tool = 4
+breaking_tier = 0
+id = "papercraft:dirt"
+collision = [PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 0)]
+loot_table = ""
+material = 2

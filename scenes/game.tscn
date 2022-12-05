@@ -1,0 +1,100 @@
+[gd_scene load_steps=9 format=3 uid="uid://dygf88dkhph5s"]
+
+[ext_resource type="Script" path="res://scripts/debug_world.gd" id="1_17vkf"]
+[ext_resource type="Script" path="res://scripts/camera_follow_cursor.gd" id="2_wfwui"]
+[ext_resource type="Texture2D" uid="uid://bask58hkp85yf" path="res://assets/textures/misc/cursor.png" id="2_wr0pw"]
+[ext_resource type="Shader" path="res://assets/shaders/cursor.gdshader" id="3_u7lmg"]
+[ext_resource type="Texture2D" uid="uid://cf6e6u6k0vext" path="res://icon.svg" id="4_72eox"]
+
+[sub_resource type="Gradient" id="Gradient_v2w3g"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.870886, 1)
+colors = PackedColorArray(0.603922, 1, 1, 1, 0.3246, 0.589216, 0.622698, 1, 0.17686, 0.371941, 0.423133, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1b6jo"]
+gradient = SubResource("Gradient_v2w3g")
+width = 1
+height = 1024
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8pb8t"]
+shader = ExtResource("3_u7lmg")
+
+[node name="Game" type="Node2D"]
+position = Vector2(0, -9)
+script = ExtResource("1_17vkf")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Sky" type="TextureRect" parent="BackgroundLayer"]
+z_as_relative = false
+offset_left = -143.0
+offset_top = -85.0
+offset_right = 144.0
+offset_bottom = 75.0
+texture = SubResource("GradientTexture2D_1b6jo")
+
+[node name="ForegroundLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Tiles" type="Node" parent="ForegroundLayer"]
+
+[node name="Entities" type="Node" parent="ForegroundLayer"]
+
+[node name="Cursor" type="Sprite2D" parent="ForegroundLayer"]
+material = SubResource("ShaderMaterial_8pb8t")
+texture = ExtResource("2_wr0pw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+follow_viewport_enabled = true
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 9
+
+[node name="UIItem" type="Control" parent="CanvasLayer/UI/GridContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/GridContainer/UIItem"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 1
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_72eox")
+ignore_texture_size = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2(4, 4)
+limit_left = -2147483648
+limit_top = -2147483647
+limit_right = 2147483647
+limit_bottom = 2147483647
+limit_smoothed = true
+script = ExtResource("2_wfwui")

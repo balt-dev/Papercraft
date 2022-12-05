@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bexjcri888mmb"]
+
+[ext_resource type="Script" path="res://classes/block_resource.gd" id="1_4kfjx"]
+[ext_resource type="Texture2D" uid="uid://g7du3ws8ro5s" path="res://assets/textures/blocks/stone.png" id="2_yip6r"]
+
+[resource]
+script = ExtResource("1_4kfjx")
+texture = ExtResource("2_yip6r")
+hardness = 1.0
+p_tool = 1
+breaking_tier = 1
+id = "papercraft:stone"
+collision = [PackedVector2Array(0, 0, 0, 1, 1, 1, 1, 0)]
+loot_table = ""
+material = 0
